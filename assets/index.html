@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <style>
+    button {
+      position: fixed;
+      bottom: 20px;
+      left: 50%;
+      transform: translateX(-50%);
+      padding: 15px 30px;
+      font-size: 20px;
+    }
+  </style>
+</head>
+<body>
+  <img id="image" src="default-image.jpg" alt="Default Image">
+  <button id="pageButton" onclick="switchPage()"> Change state </button>
+  <script>
+    function switchPage() {
+      var currentUrl = window.location.href;
+      if (currentUrl.includes('nook')) {
+        window.location.href = currentUrl.replace('nook', '');
+        document.getElementById('pageButton').innerText = 'Loading with <200>';
+      } else {
+        window.location.href = currentUrl + 'nook';
+        document.getElementById('pageButton').innerText = 'Loading without <200>';
+      }
+    }
+    // Auto refresh every 60 seconds
+    setInterval(function(){
+    location.reload();
+    }, 60000);
+  </script>
+</body>
+</html>

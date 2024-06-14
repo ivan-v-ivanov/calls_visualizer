@@ -1,0 +1,16 @@
+version: '3.2'
+services:
+  webapp:
+    restart: always
+    image: ${APP_NAME}
+    network_mode: host
+    volumes:
+    - type: bind
+      source: /etc/calls_monitoring/parameters
+      target: /calls_visualizer/parameters
+    logging:
+      driver: json-file
+      options:
+        max-size: 10m
+        max-file: '10'
+
